@@ -1,0 +1,10 @@
+.main-content {
+    margin-top: -66px;
+    height: fit-content;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #121212;
+    z-index: 0;
+    overflow-X: hidden;
+
+}
