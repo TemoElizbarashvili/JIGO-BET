@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { GamesComponent } from './components/games/games.component';
+import { CocoaRushComponent } from './components/cocoa-rush/cocoa-rush.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GamesComponent } from './components/games/games.component';
     HomeComponent,
     FooterComponent,
     CarouselComponent,
-    GamesComponent
+    GamesComponent,
+    CocoaRushComponent
   ],
   imports: [
     BrowserModule,
