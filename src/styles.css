@@ -32,6 +32,119 @@ body {
   filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
 }
 
+/* -------------------------- pop up -------------------------- */
+
+
+.exit {
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exit:hover {
+  color: rgb(255, 0, 0);
+}
+
+.pop-up-exit-container {
+  text-align: end;
+  padding: 1%;
+}
+
+.pop-up-exit-container {
+  text-align: end;
+  padding: 1%;
+}
+
+.pop-up-title-container {
+  text-align: center;
+}
+
+.pop-up-title {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.pop-up-settings-container {
+  display: block;
+}
+
+.pop-up-settings-info {
+    width: 100%;
+    height: fit-content;
+    padding: 2%;
+    font-size: 20px;
+}
+
+.pop-up-settings-card {
+  width: 100%;
+  height: 300px;
+  background-color: #080808;
+  border-radius: 15px;
+  display: flex;
+  padding: 2%;
+  margin-top: 3%;
+  justify-content: space-around;
+}
+
+.pop-up-settings-card  img {
+  width: 25%;
+  height: 100%;
+  border-radius: 1;
+}
+
+.pop-up-settings-card p {
+  width: 100%;
+}
+
+.pop-up-settings-card-info {
+  width: 58%;
+  justify-content: start;
+}
+
+.pop-up{
+  width: 80%;
+  height: 80%;
+  background-color: #101010;
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  z-index: 2000000;
+  overflow-y: scroll;
+  border-radius: 15px;
+  display: block;
+  padding: 10px;
+  color: white;        
+}
+
+@media only screen and (max-width: 1000px){
+  .pop-up-settings-card {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: fit-content;
+
+  }
+
+  .pop-up-settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+  }
+
+  .pop-up-settings-card  img {
+    width: 70%;
+    height: 100%;
+    border-radius: 1;
+  }
+
+  .pop-up-settings-info {
+    text-align: center;
+  }
+}
+
+
 
 
 /* ------------------ Animations --------------------------- */

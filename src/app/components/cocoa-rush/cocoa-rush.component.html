@@ -1,21 +1,160 @@
+<div class="pop-up" *ngIf="isPopUpOpen">
+        <div class="pop-up-exit-container">
+            <i class="fas fa-times pop-up-title exit"
+            (click)="isPopUpOpen=false"></i>
+        </div>
+        <div class="pop-up-settings-container">
+            <div class="pop-up-title-container">
+                <p class="pop-up-title">
+                    COCOA RUSH
+                </p>
+            </div>
+            <div class="pop-up-settings-info">
+                <p>
+                <strong>Step 1: Choosing Your Mode</strong>
+                    <br>
+                    When you first start the game, you'll have three exciting modes to choose from: 1 line, 3 lines, and 5 lines. Each mode offers different ways to win. The more lines you play, the higher your chances of hitting a winning combination, but it also costs more to spin. So, choose wisely!
+                    <br>
+                    
+                <strong>Step 2: Hitting Play</strong>
+                    <br>
+                    
+                    Once you've picked your preferred mode, it's time to spin the reels. To do this, simply click the "Play" button. This will set the slot machine in motion, and the reels will start spinning.
+                    <br>
+                    
+                <strong>Step 3: Watch the Reels</strong>
+                    <br>
+                    
+                    As the reels spin, keep a close eye on the symbols. Your goal is to line up the same icons on the active lines, depending on the mode you selected. Here's a quick reminder:
+                    
+                    
+                    In 1 Line mode, you'll need to match symbols on the single middle line to win.
+                    <br>
+                    
+                    In 3 Line mode, watch for matching symbols on any of the three horizontal lines.
+                    <br>
+                    
+                    In 5 Line mode, you have even more chances to win with five active lines!
+                    <br>
+                    
+                    <strong>Step 4: Winning Combinations</strong>
+                    <br>
+                    
+                    If the reels stop with the same symbols lined up on one of your active lines, congratulations! You've won! The game will automatically calculate your winnings and add them to your total.
+                    <br>
+                    
+                    <strong>Step 5: Auto Mode (Optional)</strong>
+                    <br>
+                    
+                    If you want to sit back and enjoy the show without clicking "Play" every time, you can use the Auto Mode. Just click the "Auto" button, and the game will spin the reels for you automatically. You can stop this mode at any time by clicking "Stop Auto."
+                    <br>
+                    
+                    <strong>Step 6: Keep Playing and Have Fun!</strong> 
+                    <br>
+                    
+                    That's it! You now know how to play the slot game. Remember, it's all about luck, so keep spinning, enjoy the thrill, and hopefully, you'll hit those winning combinations. Have a blast and good luck! 🍀🎰</p>
+            </div>
+            <div class="pop-up-settings-card">
+                <img src="../../../assets/images/cocoa-rush-lines/1-line.png" alt="slots">
+                <div class="pop-up-settings-card-info">
+                    <div class="pop-up-title-container">
+                        <p class="pop-up-title">
+                            1 LINE
+                        </p>
+                    </div>
+                    <p>
+                     when you play in 1 line mode, you can win when only middle
+                     lane is matching. you can see the picture.
+                    </p>
+                </div>
+            </div>
+            <div class="pop-up-settings-card">
+                <img src="../../../assets/images/cocoa-rush-lines/3-line.png" alt="slots">
+                <div class="pop-up-settings-card-info">
+                    <div class="pop-up-title-container">
+                        <p class="pop-up-title">
+                            3 LINE
+                        </p>
+                    </div>
+                    In 3 Line mode,
+                     watch for matching symbols on any of the three horizontal lines.
+                     you can see the picture.
+                </div>
+            </div>
+            <div class="pop-up-settings-card">
+                <img src="../../../assets/images/cocoa-rush-lines/5-line.png" alt="slots">
+                <div class="pop-up-settings-card-info">
+                    <div class="pop-up-title-container">
+                        <p class="pop-up-title">
+                            5 LINE
+                        </p>
+                    </div>
+                    In 5 Line mode, you have even more chances to win with five active lines!
+                    All 3 horizontal lines + diagonal lines. see the picture.
+                </div>
+            </div>
+        </div>
+</div>
 <div class="game-container">
+    <div class="go-back" >
+        <i class="fas fa-long-arrow-alt-left" [routerLink]="['/games']"> GO BACK  </i>
+        <div class="user-controls">
+            <i class="fas fa-volume-mute setting"
+             *ngIf="isMuted"
+             (click)="onMute()"></i>
+             <i class="fas fa-volume-up setting"
+             *ngIf="!isMuted"
+             (click)="onMute()"></i>
+            <i class="fas fa-cog setting" (click)="isPopUpOpen = !isPopUpOpen"></i>
+        </div>
+    </div>
     <div class="slots">
-        <div class="reel">
+        <div class="reel reel0">
             
         </div>
-        <div class="reel">
+        <div class="reel reel1">
             
         </div>
-        <div class="reel">
+        <div class="reel reel2">
             
         </div>
     </div>
+    <audio
+    id="audio" 
+    src="../../../assets/sounds/happy-14585.mp3" 
+    [volume]="0.1"
+    muted="true"
+    type="audio/mp3" [loop]="true"></audio>
+    <div class="controls">
+        <p class="game-points">Point: <span class="game-point">999</span></p>
+        <div class="control-lines">
+            <button 
+            class="game-button" 
+            [disabled]="rolling" 
+            [ngClass]="{'active': lines === 1}"
+            (click)="onLineClick(1)">1 LINE</button>
+            <button 
+            class="game-button" 
+            [disabled]="rolling" 
+            [ngClass]="{'active': lines === 3}"
+            (click)="onLineClick(3)">3 LINE</button>
+            <button 
+            class="game-button" 
+            [disabled]="rolling" 
+            [ngClass]="{'active': lines === 5}"
+            (click)="onLineClick(5)">5 LINE</button>
+        </div>
+        <button 
+        class="game-button roll"
+        [disabled]="rolling" 
+        (click)="onRoll()">PLAY</button>
+        <button 
+        class="game-button roll"
+        [disabled]="rolling" 
+        [ngClass]="{ 'active': auto }"
+        (click)="onAutoRoll()">auto</button>
+    </div>
 
-    <button class="button" (click)="onRoll()">click me</button>
-
-    <!-- <img style="position: fixed; left: 0; top: 0;
-    height: 100vh; width: auto;" 
-    src="https://assets.codepen.io/439000/slotreel.webp" alt="slots"> -->
 
 </div>
 

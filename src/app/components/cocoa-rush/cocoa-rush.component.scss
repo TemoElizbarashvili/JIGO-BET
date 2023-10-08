@@ -12,12 +12,34 @@ $num_icons: 9;
     flex-direction: column;
 }
 
+.go-back {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 4%;
+    margin-left: 4%;
+    width: 90%;
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+    justify-content: space-between;
+
+    
+
+    
+}
+
+.setting {
+    font-size: 24px;
+    font-weight: 800;
+
+   
+}
 
 .slots {
     width: 3.1 * $icon_width;
     height: 3 * $icon_height;
-    // border: 1px solid white;
-    // padding:  $icon_height;
     display: flex;
     justify-content: space-between;
     scale: 1;
@@ -29,18 +51,170 @@ $num_icons: 9;
         border: 5px solid rgb(0, 0, 0);
         width: 3 * $icon_width;
         height: 3 * $icon_height;
-        background-image: url("../../../assets/images/slots.png");
         background-repeat: repeat-y;
         background-position: 0 0;
         background-size: fill;
-        // box-shadow: 0 8px 16px 5px #ffd900;
+    }
+}
+.reel0 {
+    background-image: url("../../../assets/images/slots.png");
 
+}
+
+.reel1 {
+    background-image: url("../../../assets/images/slot-icons-2.png");
+    z-index: 3000;
+}
+
+.reel2 {
+    background-image: url("../../../assets/images/slot-icons-3.png");
+}
+
+.game-button {
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+              inset 0 -2px 5px 1px rgba(139,66,8,1),
+              inset 0 -1px 1px 3px rgba(250,227,133,1);
+    background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+    border: 1px solid #a55d07;
+    color: rgb(120,50,5);
+    text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+    transition: all .2s ease-in-out;
+    outline-offset: 4px;  
+    font-weight: 700;
+    font-size: 18px; 
+}
+
+.active {
+    transform: translateY(-10px);
+}
+
+.game-button:focus,
+.game-button:hover {
+  background-size: 150% 150%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),
+                inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250,227,133,1);
+  border: 1px solid rgba(165,93,7,.6);
+  color: rgba(120,50,5,.8);
+}
+.game-button:active {
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+              inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250,227,133,1);
+}
+
+.roll {
+    width: 110px;
+    height: 60px;
+    margin: 0 1%;    
+}
+
+.roll:active {
+    transform: translateY(10px);
+    transform: translateY(-10px);
+}
+
+.controls {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+
+    .game-points {
+        color: rgb(120,50,5);
+        font-size: 28px;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 600;
+        width: 20%;
+
+        
+        .game-point {
+            color: #ffd900;
+            border: 1px solid #a55d07;
+            background-color: rgba(0, 0, 0, 0.103);
+            padding: 3px;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+
+.control-lines{
+        width: 60%;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            margin: 0 1%;
+            font-weight: 700;
+            font-size: 18px;
+        }
+    }   
+}
+
+.user-controls {
+    width: fit-content;
+    display: flex;
+}
+
+.user-controls i {
+    margin-left: 20%;
+    
+}
+
+.go-back i:hover {
+    color: #a54e07;
+}
+
+@media only screen and (max-width: 1000px) {
+    .slots {
+        scale: 0.8;
     }
 }
 
-.button {
-    width: 100px;
-    height: 80px;
+@media only screen and (max-width: 700px) {
+    .controls {
+        scale: 1;
+        width: 100%;
+    }
 }
+
+@media only screen and (max-width: 500px) {
+    .slots {
+        scale: 0.6;
+        margin-bottom: 0;
+    }
+    .controls{
+        margin-top: -20%;
+    }
+
+    .control-lines {
+        flex-direction: column;
+
+    }
+    .active {
+        transform: translateX(10px);
+    }
+
+    .game-points {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .slots {
+        scale: 0.4;
+    }
+}
+
+
+
 
 
