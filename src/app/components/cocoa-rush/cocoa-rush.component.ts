@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
   
 // 0-6-6 // 1-5-3 // 2-4-1 // 3-7-0 // 4-2-2 // 5-1-3 // 6-0-8 // 7-3-5 // 8-8-7
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cocoa-rush.component.html',
   styleUrls: ['./cocoa-rush.component.scss']
 })
-export class CocoaRushComponent implements OnInit{
+export class CocoaRushComponent implements OnInit, OnDestroy{
   iconWidth = 200;
   iconHeight = 200;
   numIcons = 9;
@@ -25,6 +26,12 @@ export class CocoaRushComponent implements OnInit{
   auto: boolean = false;
   isMuted: boolean = false;
   audio: HTMLAudioElement;
+  winAudio: HTMLAudioElement;
+  spinAudio: HTMLAudioElement;
+  hasWined: boolean = false;
+
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     let footer = <HTMLElement>document.querySelector('footer');
@@ -32,21 +39,20 @@ export class CocoaRushComponent implements OnInit{
     let mainContainer = <HTMLElement>document.querySelector('.main-content');
     let gameContianer = <HTMLElement>document.querySelector('.game-container');
     this.audio = <HTMLAudioElement>document.querySelector('#audio');
+    this.winAudio = <HTMLAudioElement>document.querySelector('#win-audio');
+    this.spinAudio = <HTMLAudioElement>document.querySelector('#spin-audio');
 
     let viewportHeight = window.innerHeight;
 
     footer.style.display = 'none';
     navigation.style.display = 'none';
-    mainContainer.style.backgroundImage = 'url(../../../assets/images/cocoa-back.png)';
-    mainContainer.style.backgroundSize = 'cover';
-    mainContainer.style.backgroundRepeat = 'no-repeat';
     mainContainer.style.marginTop = '0';
-    mainContainer.style.backgroundPosition = 'center';
     gameContianer.style.height = `${viewportHeight}px`;
     this.audio.play();
   }
 
   animate(reel, offset = 0) :  Promise<number> {
+    this.spinAudio.play();
     const DELTA = (offset + 2) * this.numIcons + Math.round(Math.random() * this.numIcons);
     const STYLE = getComputedStyle(reel);
     const BACKGROUNDPOSITIONY = parseFloat(STYLE["background-position-y"]);
@@ -57,7 +63,7 @@ export class CocoaRushComponent implements OnInit{
     return new Promise((resolve, reject) => {
       reel.style.transition = `background-position-y ${8 + DELTA * this.timePerIcon}ms cubic-bezier(.45, .05,.58,1.09)`;
       reel.style.backgroundPositionY = `${targetBackgroundPositionY}px`;
-  
+      
       setTimeout(() => {
         reel.style.transition = `none`;
         reel.style.backgroundPositionY = `${normalTargetBackgroundPositionY}px`;
@@ -70,9 +76,10 @@ export class CocoaRushComponent implements OnInit{
 
   rollAll() {
     this.rolling = true;
+
     const REELSLIST = document.querySelectorAll('.reel');
 
-    const LIST = [...[REELSLIST]] ;
+    // const LIST = [...[REELSLIST]] ;
     
     let reels: Element[] = [];
 
@@ -91,9 +98,22 @@ export class CocoaRushComponent implements OnInit{
       });
        
       if (this.chekcWinConditions()) {
-        alert('YOU WIN!!');
+        this.winAudio.play();
+        this.hasWined = true;
+        console.log('Jackpot!');
+        let prize = this.lines * 8;
+        if (this.lines == 5) {
+          prize = this.lines * 10;
+        }
+        this.userService.balance += prize;
+        
+        setTimeout(() => {
+          this.hasWined = false;
+        }, 4000);
+    
       }
       this.rolling = false;   
+      this.userService.setBalance();
     });
   }
 
@@ -127,7 +147,13 @@ export class CocoaRushComponent implements OnInit{
 
 
   onRoll() {
-    this.rollAll();
+    if (this.userService.balance < this.lines){
+      alert('You do not have enough balance!');
+    } else {
+      this.userService.balance -= this.lines;
+      if(!this.rolling && !this.hasWined)
+        this.rollAll();
+    }
   }
 
   onLineClick(line: number) {
@@ -153,7 +179,6 @@ export class CocoaRushComponent implements OnInit{
         if (this.iconMap3[this.indexes[0][2]] == this.iconMap2[this.indexes[1][1]] && this.iconMap3[this.indexes[0][2]] == this.iconMap1[this.indexes[2][0]])
         return true;
     }
-
     return false;
   }
 
@@ -161,8 +186,8 @@ export class CocoaRushComponent implements OnInit{
     this.auto = !this.auto;
     if (this.auto) { 
      setInterval(() => {
-      if (this.auto)
-        this.rollAll();
+      if (this.auto && !this.rolling && !this.hasWined)
+        this.onRoll();
      }, 5000);
      
     }
@@ -172,6 +197,33 @@ export class CocoaRushComponent implements OnInit{
     this.isMuted = !this.isMuted;
 
     this.audio.muted = this.isMuted;
+  }
+
+  get balance() {
+    return this.userService.balance;
+  }
+
+  get prize() {
+    let prize = this.lines * 8;
+    if (this.lines == 5) {
+      prize = this.lines * 10;
+    }
+    return prize;
+  }
+
+  ngOnDestroy(): void {
+    let footer = <HTMLElement>document.querySelector('footer');
+    let navigation = <HTMLElement>document.querySelector('nav');
+    let mainContainer = <HTMLElement>document.querySelector('.main-content');
+
+
+    footer.style.display = 'block';
+    navigation.style.display = 'flex';
+    mainContainer.style.marginTop = '-70px';
+
+    this.userService.setBalance();
+
+    console.log('Destroyed!');
   }
 
 }

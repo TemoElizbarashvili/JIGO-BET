@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { GamesComponent } from './components/games/games.component';
 import { CocoaRushComponent } from './components/cocoa-rush/cocoa-rush.component';
+import { WinComponent } from './components/win/win.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CocoaRushComponent } from './components/cocoa-rush/cocoa-rush.component
     FooterComponent,
     CarouselComponent,
     GamesComponent,
-    CocoaRushComponent
+    CocoaRushComponent,
+    WinComponent
   ],
   imports: [
     BrowserModule,

@@ -173,6 +173,15 @@ $num_icons: 9;
     color: #a54e07;
 }
 
+
+.prize {
+    color: #ffd900;
+    font-weight: 900;
+    animation: fadeInAnimation 0.5s;
+}
+
+
+
 @media only screen and (max-width: 1000px) {
     .slots {
         scale: 0.8;

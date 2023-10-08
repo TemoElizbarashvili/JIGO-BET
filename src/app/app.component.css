@@ -6,4 +6,18 @@
     z-index: 0;
     overflow-X: hidden;
     margin-top: -70px;
+    background-image: url("../assets/images/cocoa-back.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
+
+@media only screen and (max-width: 875px) {
+    .main-content {
+        background-size: unset;
+        background-repeat: repeat-y;
+        background-position: unset;
+    }
+}
+

@@ -1,3 +1,5 @@
+<app-win *ngIf="hasWined"></app-win>
+
 <div class="pop-up" *ngIf="isPopUpOpen">
         <div class="pop-up-exit-container">
             <i class="fas fa-times pop-up-title exit"
@@ -64,7 +66,7 @@
                     </div>
                     <p>
                      when you play in 1 line mode, you can win when only middle
-                     lane is matching. you can see the picture.
+                     lane is matching. you can see the picture. It costs 1 point, but you will gain X8(8) on win.
                     </p>
                 </div>
             </div>
@@ -78,7 +80,7 @@
                     </div>
                     In 3 Line mode,
                      watch for matching symbols on any of the three horizontal lines.
-                     you can see the picture.
+                     you can see the picture. It costs 3 point, but you will gain X8(24) on win.
                 </div>
             </div>
             <div class="pop-up-settings-card">
@@ -90,7 +92,7 @@
                         </p>
                     </div>
                     In 5 Line mode, you have even more chances to win with five active lines!
-                    All 3 horizontal lines + diagonal lines. see the picture.
+                    All 3 horizontal lines + diagonal lines. see the picture. It costs 5 point, but you will gain X10(50) on win.
                 </div>
             </div>
         </div>
@@ -125,8 +127,21 @@
     [volume]="0.1"
     muted="true"
     type="audio/mp3" [loop]="true"></audio>
+    <audio
+    id="win-audio" 
+    src="../../../assets/sounds/win-sound-2.mp3" 
+    [volume]="0.3"
+    muted="true"
+    type="audio/mp3" [loop]="false"></audio>
+    <audio
+    id="spin-audio" 
+    src="../../../assets/sounds/slot-spin.wav" 
+    [volume]="0.3"
+    muted="true"
+    type="audio/wav" [loop]="false"></audio>
     <div class="controls">
-        <p class="game-points">Point: <span class="game-point">999</span></p>
+        <p class="game-points">Point: <span class="game-point">{{ balance }} </span>
+        <span class="prize" *ngIf="hasWined">+ {{ prize }}</span></p>
         <div class="control-lines">
             <button 
             class="game-button" 
