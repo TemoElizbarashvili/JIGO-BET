@@ -12,30 +12,6 @@ $num_icons: 9;
     flex-direction: column;
 }
 
-.go-back {
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 4%;
-    margin-left: 4%;
-    width: 90%;
-    display: flex;
-    align-items: baseline;
-    cursor: pointer;
-    justify-content: space-between;
-
-    
-
-    
-}
-
-.setting {
-    font-size: 24px;
-    font-weight: 800;
-
-   
-}
 
 .slots {
     width: 3.1 * $icon_width;
@@ -168,11 +144,6 @@ $num_icons: 9;
     margin-left: 20%;
     
 }
-
-.go-back i:hover {
-    color: #a54e07;
-}
-
 
 .prize {
     color: #ffd900;

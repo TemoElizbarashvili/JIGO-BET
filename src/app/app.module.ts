@@ -10,6 +10,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { GamesComponent } from './components/games/games.component';
 import { CocoaRushComponent } from './components/cocoa-rush/cocoa-rush.component';
 import { WinComponent } from './components/win/win.component';
+import { DiceGameComponent } from './components/dice-game/dice-game.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WinComponent } from './components/win/win.component';
     CarouselComponent,
     GamesComponent,
     CocoaRushComponent,
-    WinComponent
+    WinComponent,
+    DiceGameComponent
   ],
   imports: [
     BrowserModule,

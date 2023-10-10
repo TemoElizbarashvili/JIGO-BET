@@ -144,6 +144,34 @@ body {
   }
 }
 
+/* ----------------------- games go back ---------------------------- */
+
+.go-back {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4%;
+  margin-left: 4%;
+  width: 90%;
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
+  justify-content: space-between;
+
+  
+
+  
+}
+
+.setting {
+  font-size: 24px;
+  font-weight: 800;   
+}
+
+.go-back i:hover {
+  color: #a54e07;
+}
 
 
 

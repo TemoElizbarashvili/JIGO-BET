@@ -1,0 +1,170 @@
+<app-win *ngIf="hasWinned"></app-win>
+<div class="game-container">
+    <div class="go-back" >
+        <i class="fas fa-long-arrow-alt-left" [routerLink]="['/games']"> GO BACK  </i>
+        <div class="user-controls">
+            <i class="fas fa-volume-mute setting"
+             *ngIf="isMuted"
+             (click)="onMute()"></i>
+             <i class="fas fa-volume-up setting"
+             *ngIf="!isMuted"
+             (click)="onMute()"></i>
+            <i class="fas fa-cog setting" (click)="isPopUpOpen = !isPopUpOpen"></i>
+        </div>
+    </div>
+
+    <div class="pop-up" *ngIf="isPopUpOpen">
+        <div class="pop-up-exit-container">
+            <i class="fas fa-times pop-up-title exit"
+            (click)="isPopUpOpen=false"></i>
+        </div>
+        <div class="pop-up-settings-container">
+            <div class="pop-up-title-container">
+                <p class="pop-up-title">
+                    DICE GAME
+                </p>
+            </div>
+            <div class="pop-up-settings-info">
+                <p>
+                <strong>Step 1: Choosing Your Mode</strong>
+                    <br>
+                    When you first start the game, you'll have three exciting modes to choose from: 1 line, 3 lines, and 5 lines. Each mode offers different ways to win. The more lines you play, the higher your chances of hitting a winning combination, but it also costs more to spin. So, choose wisely!
+                    <br>
+                    
+                <strong>Step 2: Hitting Play</strong>
+                    <br>
+                    
+                    Once you've picked your preferred mode, it's time to spin the reels. To do this, simply click the "Play" button. This will set the slot machine in motion, and the reels will start spinning.
+                    <br>
+                    
+                <strong>Step 3: Watch the Reels</strong>
+                    <br>
+                    
+                    As the reels spin, keep a close eye on the symbols. Your goal is to line up the same icons on the active lines, depending on the mode you selected. Here's a quick reminder:
+                    
+                    
+                    In 1 Line mode, you'll need to match symbols on the single middle line to win.
+                    <br>
+                    
+                    In 3 Line mode, watch for matching symbols on any of the three horizontal lines.
+                    <br>
+                    
+                    In 5 Line mode, you have even more chances to win with five active lines!
+                    <br>
+                    
+                    <strong>Step 4: Winning Combinations</strong>
+                    <br>
+                    
+                    If the reels stop with the same symbols lined up on one of your active lines, congratulations! You've won! The game will automatically calculate your winnings and add them to your total.
+                    <br>
+                    
+                    <strong>Step 5: Auto Mode (Optional)</strong>
+                    <br>
+                    
+                    If you want to sit back and enjoy the show without clicking "Play" every time, you can use the Auto Mode. Just click the "Auto" button, and the game will spin the reels for you automatically. You can stop this mode at any time by clicking "Stop Auto."
+                    <br>
+                    
+                    <strong>Step 6: Keep Playing and Have Fun!</strong> 
+                    <br>
+                    
+                    That's it! You now know how to play the slot game. Remember, it's all about luck, so keep spinning, enjoy the thrill, and hopefully, you'll hit those winning combinations. Have a blast and good luck! 🍀🎰</p>
+            </div>
+            <div class="pop-up-settings-card">
+                <img src="../../../assets/images/cocoa-rush-lines/1-line.png" alt="slots">
+                <div class="pop-up-settings-card-info">
+                    <div class="pop-up-title-container">
+                        <p class="pop-up-title">
+                            1 LINE
+                        </p>
+                    </div>
+                    <p>
+                     when you play in 1 line mode, you can win when only middle
+                     lane is matching. you can see the picture. It costs 1 point, but you will gain X8(8) on win.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="container">
+          <div id='dice1' class="dice dice-one">
+            <div id="dice-one-side-one" class='side one'>
+              <div class="dot one-1"></div>
+            </div>
+            <div id="dice-one-side-two" class='side two'>
+              <div class="dot two-1"></div>
+              <div class="dot two-2"></div>
+            </div>
+            <div id="dice-one-side-three" class='side three'>
+              <div class="dot three-1"></div>
+              <div class="dot three-2"></div>
+              <div class="dot three-3"></div>
+            </div>
+            <div id="dice-one-side-four" class='side four'>
+              <div class="dot four-1"></div>
+              <div class="dot four-2"></div>
+              <div class="dot four-3"></div>
+              <div class="dot four-4"></div>
+            </div>
+            <div id="dice-one-side-five" class='side five'>
+              <div class="dot five-1"></div>
+              <div class="dot five-2"></div>
+              <div class="dot five-3"></div>
+              <div class="dot five-4"></div>
+              <div class="dot five-5"></div>
+            </div>
+            <div id="dice-one-side-six" class='side six'>
+              <div class="dot six-1"></div>
+              <div class="dot six-2"></div>
+              <div class="dot six-3"></div>
+              <div class="dot six-4"></div>
+              <div class="dot six-5"></div>
+              <div class="dot six-6"></div>
+            </div>
+          </div>
+       </div>
+        <div class="container">
+          <div id='dice2' class="dice dice-two">
+            <div id="dice-two-side-one" class='side one'>
+              <div class="dot one-1"></div>
+            </div>
+            <div id="dice-two-side-two" class='side two'>
+              <div class="dot two-1"></div>
+              <div class="dot two-2"></div>
+            </div>
+            <div id="dice-two-side-three" class='side three'>
+              <div class="dot three-1"></div>
+              <div class="dot three-2"></div>
+              <div class="dot three-3"></div>
+            </div>
+            <div id="dice-two-side-four" class='side four'>
+              <div class="dot four-1"></div>
+              <div class="dot four-2"></div>
+              <div class="dot four-3"></div>
+              <div class="dot four-4"></div>
+            </div>
+            <div id="dice-two-side-five" class='side five'>
+              <div class="dot five-1"></div>
+              <div class="dot five-2"></div>
+              <div class="dot five-3"></div>
+              <div class="dot five-4"></div>
+              <div class="dot five-5"></div>
+            </div>
+            <div id="dice-two-side-six" class='side six'>
+              <div class="dot six-1"></div>
+              <div class="dot six-2"></div>
+              <div class="dot six-3"></div>
+              <div class="dot six-4"></div>
+              <div class="dot six-5"></div>
+              <div class="dot six-6"></div>
+            </div>
+          </div> 
+       </div>
+       <div id='roll' class='roll-button' (click)="rollDice()"><button [disabled]="isRolling">Roll dice!</button></div>
+    </div> 
+    <audio id="roll-dice" src="../../../assets/sounds/dice.mp3" muted="true" [loop]="false"  type="audio/mp3" [volume]="0.5"></audio>
+    <audio id="game-win" src="../../../assets/sounds/dice-game-win.wav" muted="true" [loop]="false"  type="audio/mp3" [volume]="0.5"></audio>
+
+
+</div>
