@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './dice-game.component.html',
   styleUrls: ['./dice-game.component.scss']
 })
-export class DiceGameComponent implements OnInit {
+export class DiceGameComponent implements OnInit, OnDestroy {
   diceOne;
   diceTwo;
   isPopUpOpen: boolean = false;
@@ -18,7 +18,6 @@ export class DiceGameComponent implements OnInit {
   
 
   constructor(private userService: UserService) { }
-  
 
   ngOnInit(): void {
     let footer = <HTMLElement>document.querySelector('footer');
@@ -45,7 +44,7 @@ export class DiceGameComponent implements OnInit {
       this.diceRollAudio.play();
 
     this.isRolling = true;
-    this.userService.balance -= 20;
+    this.userService.balance -= 10;
 
     let diceOne = Math.floor((Math.random() * 6) + 1);
     let diceTwo= Math.floor((Math.random() * 6) + 1);
@@ -66,18 +65,22 @@ export class DiceGameComponent implements OnInit {
 
     if (this.winCheck(diceOne, diceTwo))
     {
+      this.hasWinned = true;
       this.userService.balance += 100;
       setTimeout(() => {
         if (!this.isMuted)
           this.winAudio.play();
       }, (1000));
+      setTimeout(() => {
+        this.hasWinned = false;
+      }, 3000);
 
     }
 
 
     setTimeout(() => {
     this.isRolling = false;
-    }, 2000);
+    }, 1500);
 
     this.userService.setBalance();
   }
@@ -95,4 +98,23 @@ export class DiceGameComponent implements OnInit {
     this.isMuted = !this.isMuted;
   }
 
+  get balance() {
+    return this.userService.balance;
+  }
+
+
+  ngOnDestroy(): void {
+    let footer = <HTMLElement>document.querySelector('footer');
+    let navigation = <HTMLElement>document.querySelector('nav');
+    let mainContainer = <HTMLElement>document.querySelector('.main-content');
+
+
+    footer.style.display = 'block';
+    navigation.style.display = 'flex';
+    mainContainer.style.marginTop = '-70px';
+
+    this.userService.setBalance();
+
+  }
 }
+
