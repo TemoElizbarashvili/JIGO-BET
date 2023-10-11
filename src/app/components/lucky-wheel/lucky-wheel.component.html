@@ -1,1 +1,101 @@
-<p>lucky-wheel works!</p>
+<div class="game-container">
+    <div class="go-back" >
+        <i class="fas fa-long-arrow-alt-left" [routerLink]="['/games']"> GO BACK  </i>
+        <div class="user-controls">
+            <i class="fas fa-volume-mute setting"
+             *ngIf="isMuted"
+             (click)="onMute()"></i>
+             <i class="fas fa-volume-up setting"
+             *ngIf="!isMuted"
+             (click)="onMute()"></i>
+            <i class="fas fa-cog setting" (click)="isPopUpOpen = !isPopUpOpen"></i>
+        </div>
+    </div>
+    <div class="pop-up" *ngIf="isPopUpOpen">
+        <div class="pop-up-exit-container">
+            <i class="fas fa-times pop-up-title exit"
+            (click)="isPopUpOpen=false"></i>
+        </div>
+        <div class="pop-up-settings-container">
+            <div class="pop-up-title-container">
+                <p class="pop-up-title">
+                    DICE GAME
+                </p>
+            </div>
+            <div class="pop-up-settings-info">
+                <p>
+                <strong>Game Introduction</strong>
+                    <br>
+                    Welcome to the Dice Game! Are you feeling lucky? This game is all about rolling the dice and trying to win big. Here's how to play:
+                    <br>
+                    
+                <strong>Objective:</strong>
+                    <br>
+                    Your goal is to roll a sum of 11 or 12, which can be achieved with dice combinations like 5-6 or 6-6.
+                    <br>
+                    
+                <strong>Points</strong>
+                    <br>
+                    One roll costs 10 point, but if you win you recive 100 Point.
+                    <br>
+                    <strong>Step 6: Keep Playing and Have Fun!</strong> 
+                    <br>
+                    
+                    That's it! You now know how to play the game. Remember,
+                    it's all about luck, so keep rolling, enjoy the thrill, 
+                    and hopefully, you'll hit those winning combinations. 
+                    Have a blast and good luck! 🍀🎰</p>
+            </div>
+            <div class="pop-up-settings-card">
+                <img src="../../../assets/images/roll-dice/5-6.png" alt="slots">
+                <div class="pop-up-settings-card-info">
+                    <div class="pop-up-title-container">
+                        <p class="pop-up-title">
+                            combination of 5-6
+                        </p>
+                    </div>
+                    <p>
+                     In order to win you have to roll combination of 5-6 (11 in sum) and you will recive +100 point
+                    </p>
+                </div>
+            </div>
+            <div class="pop-up-settings-card">
+              <img src="../../../assets/images/roll-dice/6-6.png" alt="slots">
+              <div class="pop-up-settings-card-info">
+                  <div class="pop-up-title-container">
+                      <p class="pop-up-title">
+                        pair of 6
+                      </p>
+                  </div>
+                  <p>
+                   The second win condition is rolling pair of 6 (12 in sum) and you will recive +100 point
+                  </p>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="arrow">
+            <i class="fas fa-arrow-down wheel-arrow"></i>
+        </div>
+        <div 
+        class="circle"
+        (click)="onSpinWheel()">
+        </div> 
+    </div>
+    <div class="game-control">
+        <p class="point-text">Point: 
+            <span class="point">{{ balance }}</span>
+            <span class="point" *ngIf="hasWinned"> + {{ prize }}</span>
+        </p>
+        <button 
+        class="spine" 
+        (click)="onSpinWheel()" 
+        [disabled]="isSpinning">SPIN</button>
+    </div>
+</div>
+
+<div class="win" *ngIf="hasWinned">
+    {{ prizeToDisplay }}
+</div>

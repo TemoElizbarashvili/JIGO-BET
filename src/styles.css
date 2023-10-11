@@ -175,6 +175,32 @@ body {
 
 
 
+
+/* --------------------- Points -------------------- */
+
+.point-display {
+  position: absolute;
+  bottom: 10%;
+  text-align: start;
+  left: 2%;
+  background-color: #090909a6;
+  border-radius: 15px;
+  padding: 4px;
+ 
+}
+
+.point {
+  color: #ff4747;
+  animation: fadeInAnimation;
+  animation-duration: 0.5s;
+}
+
+.point-text {
+  font-size: 30px;
+  color: white;
+}
+
+
 /* ------------------ Animations --------------------------- */
 
 @keyframes fadeInAnimation {

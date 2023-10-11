@@ -36,7 +36,6 @@ button:hover, button:active {
   position: absolute;
   top: 10%;
   width: auto;
-  // height: 100%; 
   scale: 1.5;
 }
 
@@ -172,26 +171,7 @@ button:hover, button:active {
     }
   }
 
-  .point-display {
-    position: absolute;
-    bottom: 10%;
-    text-align: start;
-    left: 2%;
-    background-color: #090909b0;
-    border-radius: 15px;
-    padding: 4px;
-
-    .point-text {
-      font-size: 30px;
-      color: white;
-
-      .point {
-        color: #ff4747;
-        animation: fadeInAnimation;
-        animation-duration: 0.5s;
-      }
-    }
-  }
+  
 }
 
 
