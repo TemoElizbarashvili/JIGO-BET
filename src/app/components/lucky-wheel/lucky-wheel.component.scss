@@ -113,3 +113,63 @@ $degToRotate: 360 * 4 + random(360);
 }
 
 
+@media only screen and (max-width: 650px) {
+    .game {
+        scale: 0.9;
+    }
+
+    .game-control {
+        width: 100%;
+        left: 0;
+        scale: 1;
+    }
+
+    .point-text {
+        scale: 0.7;
+    }
+
+    .spine {
+        scale: 0.9;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    .game {
+        scale: 0.8;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .game {
+        scale: 0.7;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .game {
+        scale: 0.6;
+    }
+
+}
+
+@media only screen and (max-width: 370px) {
+    .game {
+        scale: 0.5
+    }
+    .game-control {
+        flex-direction: column;
+    }
+    .spine {
+        margin-top: 2px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .game {
+        scale: 0.4;
+    }
+}
+
+
+

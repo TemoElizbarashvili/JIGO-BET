@@ -19,59 +19,23 @@
         <div class="pop-up-settings-container">
             <div class="pop-up-title-container">
                 <p class="pop-up-title">
-                    DICE GAME
+                    LUCKY WHEEL
                 </p>
             </div>
             <div class="pop-up-settings-info">
                 <p>
                 <strong>Game Introduction</strong>
                     <br>
-                    Welcome to the Dice Game! Are you feeling lucky? This game is all about rolling the dice and trying to win big. Here's how to play:
+                    Welcome to the thrilling world of 'Lucky Wheel'!
+                    Get ready to test your luck and win some fantastic prizes. Spin the wheel, and who knows, 
+                    you might just hit the jackpot! You have a chance to win 5 points, 10 points, or even a whopping 100 points.
+                    But watch out for 'Banknot' – it does not give you nothing!
+                    Each spin costs you 10 points, so make sure you're feeling lucky before you take a chance. 
+                    You can click on the 'Spin' button or give the wheel itself a wheel – the choice is yours. 
+                    Will you be the ultimate spinner and win big? There's only one way to find out – start spinning and let the good times roll!
                     <br>
-                    
-                <strong>Objective:</strong>
-                    <br>
-                    Your goal is to roll a sum of 11 or 12, which can be achieved with dice combinations like 5-6 or 6-6.
-                    <br>
-                    
-                <strong>Points</strong>
-                    <br>
-                    One roll costs 10 point, but if you win you recive 100 Point.
-                    <br>
-                    <strong>Step 6: Keep Playing and Have Fun!</strong> 
-                    <br>
-                    
-                    That's it! You now know how to play the game. Remember,
-                    it's all about luck, so keep rolling, enjoy the thrill, 
-                    and hopefully, you'll hit those winning combinations. 
-                    Have a blast and good luck! 🍀🎰</p>
+                </p>
             </div>
-            <div class="pop-up-settings-card">
-                <img src="../../../assets/images/roll-dice/5-6.png" alt="slots">
-                <div class="pop-up-settings-card-info">
-                    <div class="pop-up-title-container">
-                        <p class="pop-up-title">
-                            combination of 5-6
-                        </p>
-                    </div>
-                    <p>
-                     In order to win you have to roll combination of 5-6 (11 in sum) and you will recive +100 point
-                    </p>
-                </div>
-            </div>
-            <div class="pop-up-settings-card">
-              <img src="../../../assets/images/roll-dice/6-6.png" alt="slots">
-              <div class="pop-up-settings-card-info">
-                  <div class="pop-up-title-container">
-                      <p class="pop-up-title">
-                        pair of 6
-                      </p>
-                  </div>
-                  <p>
-                   The second win condition is rolling pair of 6 (12 in sum) and you will recive +100 point
-                  </p>
-              </div>
-          </div>
         </div>
     </div>
 
@@ -99,3 +63,6 @@
 <div class="win" *ngIf="hasWinned">
     {{ prizeToDisplay }}
 </div>
+
+<audio id="spin-audio" src="../../../assets/sounds/spin-sound.mp3" muted="true" [loop]="false"  type="audio/mp3" [volume]="0.4"></audio>
+

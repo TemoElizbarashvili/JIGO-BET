@@ -14,11 +14,13 @@ export class LuckyWheelComponent implements OnInit, OnDestroy {
   isPopUpOpen: boolean = false;
   hasWinned: boolean = false;
   prize: any = '';
+  spinAudio: HTMLAudioElement;
 
   constructor(private uiService: UIService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.circle = document.querySelector('.circle');
+    this.spinAudio = document.querySelector('#spin-audio')
 
     this.uiService.removeUi();
   }
@@ -38,16 +40,22 @@ export class LuckyWheelComponent implements OnInit, OnDestroy {
   onSpinWheel() {
     if(this.isSpinning)
       return;
+    if (!this.isMuted)
+      this.spinAudio.play();
+
     this.isSpinning = true;
+    this.userService.balance -= 10;
+
     const finalDeg = Math.floor(Math.random() * 360);
+
     this.prize = this.checkPrize(finalDeg);
-    console.log('degree', finalDeg);
+
     const degToSpin = 360 + 360 * Math.floor((Math.random() * 5)) + finalDeg;
+
     this.circle.style.transform = `rotate(${degToSpin}deg)`;
     this.circle.style.transition = `3s cubic-bezier(0,.07,0,1)`;
     
-
-    // this.circle.style.animationTimingFunction = `cubic-bezier(.03,.82,1,.23)`;
+  
     setTimeout(() => {
       this.circle.style.transform = `rotate(${degToSpin%360}deg)`;
       this.circle.style.transition = `0s`;
@@ -57,6 +65,8 @@ export class LuckyWheelComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.isSpinning = false;
       this.hasWinned = false;
+      this.userService.balance += this.prize;
+      this.userService.setBalance();
     }, 4000);
 
   }
@@ -80,7 +90,7 @@ export class LuckyWheelComponent implements OnInit, OnDestroy {
   }
 
   onMute() {
-
+    this.isMuted = !this.isMuted;
   }
 
   get balance() { 
