@@ -12,6 +12,7 @@ import { CocoaRushComponent } from './components/cocoa-rush/cocoa-rush.component
 import { WinComponent } from './components/win/win.component';
 import { DiceGameComponent } from './components/dice-game/dice-game.component';
 import { LuckyWheelComponent } from './components/lucky-wheel/lucky-wheel.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LuckyWheelComponent } from './components/lucky-wheel/lucky-wheel.compon
     CocoaRushComponent,
     WinComponent,
     DiceGameComponent,
-    LuckyWheelComponent
+    LuckyWheelComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

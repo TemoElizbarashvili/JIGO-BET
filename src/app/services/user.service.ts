@@ -11,7 +11,6 @@ export class UserService implements OnInit, OnDestroy{
 
     constructor() {
         let currentBalance = localStorage.getItem('Balance');
-        // console.log('in service init');
 
         if (!currentBalance) {
             this.balance = 500;

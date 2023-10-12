@@ -1,0 +1,180 @@
+.first {
+    animation: slideIn;
+    animation-duration: 2s;
+}
+
+.about-container { 
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #121212;
+    overflow-y: hidden;
+    position: relative;
+
+
+
+    .title {
+        margin-top: 100px;
+        text-align: center;
+        font-size: 36px;
+        color: white;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        letter-spacing: 1.5em;
+        font-weight: 700;
+
+    }
+
+    .info-container { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+    }
+}
+
+.second.animate, .third.animate {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+
+.info-image {
+    width: 50%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.info-text {
+    // background-color: white;
+    width: 50%;
+    height: 500px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.second, .third {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transform: translateX(220px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.second {
+    background-color: rgba(10, 10, 10, 0.699);
+    transform: translateX(-220px);
+}
+
+.info-text-title {
+    width: 50%;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.info-text-paragraph {
+    width: 70%;
+    font-size: 24px;
+
+}
+
+.right{ 
+    text-align: end;
+}
+
+
+.casino { 
+    background-image: url("../../../assets/images/about-us/casino.png");
+}
+
+.pinball {
+    background-image: url("../../../assets/images/about-us/pinball.png");
+}
+
+.room {
+    background-image: url("../../../assets/images/about-us/room.png");
+}
+
+.numbers-container {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+}
+
+
+.numbers-container-part {
+    height: 200px;
+    width: 27%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .number-container-title {
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    .value {
+        font-size: 34px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .about-container .title {
+        letter-spacing: 0;
+        margin-bottom: 20px;
+    }
+
+
+    .first, .about-container {
+        height: fit-content;
+        flex-direction: column;
+        padding: 3%;
+    }
+
+    .info-container, .info-text, .right {
+        height: fit-content;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .info-text-paragraph {
+        font-size: 18px;
+    }
+
+    .info-text-title {
+        font-size: 22px;
+    }
+
+    .info-image {
+        width: 100%;
+        height: 300px;
+    }
+
+    .numbers-container {
+        width: 100%;
+        justify-content: space-between;
+        scale: 1;
+    }
+
+    .numbers-container-part .number-container-title {
+        font-size: 20px;
+    }
+}

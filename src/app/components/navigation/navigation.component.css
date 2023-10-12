@@ -45,6 +45,7 @@ nav {
     position: relative;
     height: 60px;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .nav-container .checkbox {
