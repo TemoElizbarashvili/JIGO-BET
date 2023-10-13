@@ -13,6 +13,7 @@ import { WinComponent } from './components/win/win.component';
 import { DiceGameComponent } from './components/dice-game/dice-game.component';
 import { LuckyWheelComponent } from './components/lucky-wheel/lucky-wheel.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     WinComponent,
     DiceGameComponent,
     LuckyWheelComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,174 @@
+.contact-container {
+    width: 100%;
+    height: 97vh;
+    margin-top: 80px;
+    padding: 1%;
+    background-color: #121212;
+}
+
+.contact-content {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.text-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    height: 50px;
+    background-color: transparent;
+    margin-bottom: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px 15px;
+    color: white;
+}
+
+textarea {
+    background-color: transparent;
+    margin-bottom: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    color: white;
+}
+
+.form-button {
+    height: 50px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.705);
+    border: 0;
+}
+
+.form-button:hover {
+    background-color: #101010;
+    color: white;
+    border: 0;
+}
+
+.text-container-title {
+    font-size: 80px;
+    color: white;
+    width: 60%;
+    font-weight: 300;
+}
+
+.arrow {
+    transform: rotate(45deg);
+    font-size: 35px;
+}
+
+.text-container-paragraph {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    width: 60%;
+}
+
+.socials {
+    margin-top: 10px;
+    width: 60%;
+    display: flex;
+}
+
+.socials a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.socials a i {
+    font-size: 20px;
+    margin-right: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 10px;
+
+}
+
+.socials a i:hover{
+    scale: 1.2;
+    color: white;
+}
+
+@media only screen and (max-width: 1350px) {
+    .text-container-title {
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .text-container-title {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .contact-container {
+        height: 100vh;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        height: 100%;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .text-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .socials{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .socials a i {
+        margin: 5px 10px;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    .text-container-title {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .text-container-title {
+        font-size: 24px;
+    }
+
+    .contact-container {
+        height: fit-content;
+    }
+}
