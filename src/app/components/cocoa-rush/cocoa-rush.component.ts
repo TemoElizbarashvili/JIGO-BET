@@ -37,38 +37,35 @@ export class CocoaRushComponent implements OnInit, OnDestroy{
     let footer = <HTMLElement>document.querySelector('footer');
     let navigation = <HTMLElement>document.querySelector('nav');
     let mainContainer = <HTMLElement>document.querySelector('.main-content');
-    let gameContianer = <HTMLElement>document.querySelector('.game-container');
     this.audio = <HTMLAudioElement>document.querySelector('#audio');
     this.winAudio = <HTMLAudioElement>document.querySelector('#win-audio');
     this.spinAudio = <HTMLAudioElement>document.querySelector('#spin-audio');
 
-    let viewportHeight = window.innerHeight;
 
     footer.style.display = 'none';
     navigation.style.display = 'none';
     mainContainer.style.marginTop = '0';
-    gameContianer.style.height = `${viewportHeight}px`;
     this.audio.play();
   }
 
   animate(reel, offset = 0) :  Promise<number> {
     this.spinAudio.play();
-    const DELTA = (offset + 2) * this.numIcons + Math.round(Math.random() * this.numIcons);
-    const STYLE = getComputedStyle(reel);
-    const BACKGROUNDPOSITIONY = parseFloat(STYLE["background-position-y"]);
-    let targetBackgroundPositionY = BACKGROUNDPOSITIONY + DELTA * this.iconHeight;
+    const delta = (offset + 2) * this.numIcons + Math.round(Math.random() * this.numIcons);
+    const style = getComputedStyle(reel);
+    const backgroundPositionY = parseFloat(style["background-position-y"]);
+    let targetBackgroundPositionY = backgroundPositionY + delta * this.iconHeight;
     let normalTargetBackgroundPositionY = targetBackgroundPositionY%(this.numIcons * this.iconHeight);
 
 
     return new Promise((resolve, reject) => {
-      reel.style.transition = `background-position-y ${8 + DELTA * this.timePerIcon}ms cubic-bezier(.45, .05,.58,1.09)`;
+      reel.style.transition = `background-position-y ${8 + delta * this.timePerIcon}ms cubic-bezier(.45, .05,.58,1.09)`;
       reel.style.backgroundPositionY = `${targetBackgroundPositionY}px`;
       
       setTimeout(() => {
         reel.style.transition = `none`;
         reel.style.backgroundPositionY = `${normalTargetBackgroundPositionY}px`;
-        resolve(DELTA%this.numIcons);
-      }, 8 + DELTA * this.timePerIcon )
+        resolve(delta%this.numIcons);
+      }, 8 + delta * this.timePerIcon )
     });
 
 
@@ -78,8 +75,6 @@ export class CocoaRushComponent implements OnInit, OnDestroy{
     this.rolling = true;
 
     const REELSLIST = document.querySelectorAll('.reel');
-
-    // const LIST = [...[REELSLIST]] ;
     
     let reels: Element[] = [];
 
@@ -100,7 +95,6 @@ export class CocoaRushComponent implements OnInit, OnDestroy{
       if (this.chekcWinConditions()) {
         this.winAudio.play();
         this.hasWined = true;
-        console.log('Jackpot!');
         let prize = this.lines * 8;
         if (this.lines == 5) {
           prize = this.lines * 10;
@@ -117,33 +111,6 @@ export class CocoaRushComponent implements OnInit, OnDestroy{
     });
   }
 
-
-  printResult() {
-    this.indexes[0].forEach((element, i) => {
-      if (i == 0) 
-        console.log(this.iconMap1[element]);
-      if (i == 1)
-        console.log(this.iconMap2[element]);
-      if (i == 2)
-        console.log(this.iconMap3[element]);
-    });
-    this.indexes[1].forEach((element, i) => {
-      if (i == 0) 
-        console.log(this.iconMap1[element]);
-      if (i == 1)
-        console.log(this.iconMap2[element]);
-      if (i == 2)
-        console.log(this.iconMap3[element]);
-    });
-    this.indexes[2].forEach((element, i) => {
-      if (i == 0) 
-        console.log(this.iconMap1[element]);
-      if (i == 1)
-        console.log(this.iconMap2[element]);
-      if (i == 2)
-        console.log(this.iconMap3[element]);
-    });
-  }
 
 
   onRoll() {
@@ -223,7 +190,6 @@ export class CocoaRushComponent implements OnInit, OnDestroy{
 
     this.userService.setBalance();
 
-    console.log('Destroyed!');
   }
 
 }

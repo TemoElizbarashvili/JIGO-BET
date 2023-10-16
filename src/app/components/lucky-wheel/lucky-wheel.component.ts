@@ -25,19 +25,11 @@ export class LuckyWheelComponent implements OnInit, OnDestroy {
     this.uiService.removeUi();
   }
 
-
-  // 0-22.5 = 5 pts;
-  // 22.5 - 67.5 = banknot
-  // 67.5 - 112.5 = 10 point
-  // 112.5 - 157.5 = 100 point
-  // 157.5 - 202.5 = 5 point
-  // 202.5 - 247.5 = banknot
-  // 247.5 - 292.5 = 10 point
-  // 292.5 - 337.5 = 100 point
-  // 337.5 - 360 = 5 point
-
-
   onSpinWheel() {
+    if (this.balance < 10) {
+      alert('Not enough points!')
+      return;
+    }
     if(this.isSpinning)
       return;
     if (!this.isMuted)

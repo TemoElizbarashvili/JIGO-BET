@@ -7,9 +7,14 @@ $num_icons: 9;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 105vh;
+    height: 100vh;
     width: 100%;
     flex-direction: column;
+    background-image: url("../../../assets/images/cocoa-rush-lines/background.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 

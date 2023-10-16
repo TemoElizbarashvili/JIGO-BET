@@ -23,25 +23,26 @@ export class DiceGameComponent implements OnInit, OnDestroy {
     let footer = <HTMLElement>document.querySelector('footer');
     let navigation = <HTMLElement>document.querySelector('nav');
     let mainContainer = <HTMLElement>document.querySelector('.main-content');
-    let gameContianer = <HTMLElement>document.querySelector('.game-container');
     this.diceOne = document.getElementById("dice1");
     this.diceTwo = document.getElementById("dice2");
     this.diceRollAudio = document.querySelector('#roll-dice')
     this.winAudio = document.querySelector('#game-win')
 
-    let viewportHeight = window.innerHeight;
-
     footer.style.display = 'none';
     navigation.style.display = 'none';
     mainContainer.style.marginTop = '0';
-    gameContianer.style.height = `${viewportHeight}px`;
-
   }
 
 
   rollDice() {
+    if (this.balance < 10){
+      alert('Not enough points!');
+      return;
+    }
+    
     if (!this.isMuted)
       this.diceRollAudio.play();
+
 
     this.isRolling = true;
     this.userService.balance -= 10;

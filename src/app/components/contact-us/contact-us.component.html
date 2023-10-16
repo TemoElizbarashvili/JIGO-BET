@@ -30,13 +30,13 @@
             </div>
         </div>
         <div class="form-container">
-            <form>
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email">
-                <input type="text" placeholder="Company URL">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <input type="text" placeholder="Full Name" formControlName="name">
+                <input type="email" placeholder="Email" formControlName="email">
+                <input type="text" placeholder="Company URL" formControlName="url">
                 <textarea name="description" 
-                placeholder="Description" cols="30" rows="10"></textarea>
-                <button class="form-button" type="button">Get In Touch</button>
+                placeholder="Description" cols="30" rows="10" formControlName="description"></textarea>
+                <button class="form-button" type="submit">Get In Touch</button>
             </form>
         </div>
     </div>
